@@ -84,29 +84,32 @@ inTheForest(new Person()); // OK
 - 다양한 형태를 지닌 성질
 - 객체 지향 프로그래밍에서 '외형적으로 동일한 심볼을 지녔으나 내부적으로 다른 구현을 가질 수 있는 특성'을 의미함
 - 정적 다형성, 동적 다형성이 있음
-=> TypeScript는 타입 체크를 정적 타입으로 하는 것!
+=> TypeScript는 타입 체크를 정적 타입으로 하는 것!   
 => 결국은 스크립트이므로 동적 다형성을 이용함!
 
 <br/>
 
 <br/>
 
-### 정적 다형성
+### 정적 다형성 (overloading)
 - static(컴파일) 바인딩: 컴파일 때 객체의 타입이 정해짐
 - 정적 다형성은 동일한 함수 이름을 가지더라도 해당 함수가 가지는 파라미터들의 개수, 타입, 순서가 다를 경우 컴파일러가 다른 함수로써 인식 하는 것을 의미함
+- JS에서는 오버로딩을 바로 구현할 수 없음. 매개변수가 달라도 동일한 이름의 함수는 오버라이딩해버리므로 오버로딩처럼 구현하려면 함수 내부에서 분기 처리해야함
+
 ```
 //  둘은 다른 함수로 인식함
 void Func(int x);
 void Func(double x); 
 ```
 
-
 <br/>
 <br/>
 
-### 동적 다형성
+### 동적 다형성 (overriding)
 - dynamic(런타임) 바인딩
 - 동적 다형성은 동일한 함수 이름과 파라미터 특성을 지닌, 상속 관계에 있는 클래스들의 멤버 함수에 대해서 외형적으로 호출되는 타입에 상관없이 실제 생성된 객체의 함수가 호출되도록 처리 되는 특성을 의미함
+- JS에서는 매개변수, 리턴 자료형을 다르게 해도 오버라이딩 가능
+
 ```
 class Base
 {
@@ -220,4 +223,4 @@ let a: A = new B(); // 통과
 - https://velog.io/@vlwkaos/Structural-vs-Nominal-Subtyping-%EA%B7%B8%EB%A6%AC%EA%B3%A0-TypeScript
 - https://toss.tech/article/typescript-type-compatibility
 - http://pds1.egloos.com/pds/1/200601/03/63/Polymorphism_and_function_dispatch.pdf
-
+- https://www.zerocho.com/category/JavaScript/post/59c17a58f40d2800197c65d6
