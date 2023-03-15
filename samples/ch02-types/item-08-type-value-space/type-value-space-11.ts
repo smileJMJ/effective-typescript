@@ -29,3 +29,5 @@ type T = typeof Cylinder;  // Type is typeof Cylinder
 const first: Person['first'] = p['first'];  // Or p.first
    // -----                    ---------- Values
    //        ------ ------- Types
+
+const fir: Person.first = p.first;
