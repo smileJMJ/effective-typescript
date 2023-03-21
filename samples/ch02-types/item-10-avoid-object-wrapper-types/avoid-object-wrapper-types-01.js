@@ -5,3 +5,6 @@ String.prototype.charAt = function(pos) {
   return originalCharAt.call(this, pos);
 };
 console.log('primitive'.charAt(3));
+
+console.log('hello' === new String("hello")); // false
+console.log(new String('hello') === new String('hello')); // false
