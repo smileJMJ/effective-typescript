@@ -1,28 +1,11 @@
-function parseTaggedText(lines: string[]): string[][] {
-  const currPara: readonly string[] = [];
-  const paragraphs: string[][] = [];
+{
+  // const + readonly 일 때
+  const ro: readonly number[] = [];
+  ro = [1]; // 할당 불가능
+  ro.push(2); // 배열 요소 변경 불가능
 
-  const addParagraph = () => {
-    if (currPara.length) {
-      paragraphs.push(
-        currPara
-     // ~~~~~~~~ Type 'readonly string[]' is 'readonly' and
-     //          cannot be assigned to the mutable type 'string[]'
-      );
-      currPara.length = 0;  // Clear lines
-            // ~~~~~~ Cannot assign to 'length' because it is a read-only 
-            // property
-    }
-  };
-
-  for (const line of lines) {
-    if (!line) {
-      addParagraph();
-    } else {
-      currPara.push(line);
-            // ~~~~ Property 'push' does not exist on type 'readonly string[]'
-    }
-  }
-  addParagraph();
-  return paragraphs;
+  // let + readonly 일 때
+  let roo: readonly number[] = [];
+  roo = [1]; // 할당 가능
+  ro.push(2); // 배열 요소 불가능  
 }
