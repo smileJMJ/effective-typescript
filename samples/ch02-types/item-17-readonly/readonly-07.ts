@@ -1,4 +1,9 @@
 {
+  /**
+   *  const: 변수 값 재할당 불가능
+   *  readonly Array: 배열 요소(값) 변경 불가능
+   */
+
   // const + readonly 일 때
   const ro: readonly number[] = [];
   ro = [1]; // 할당 불가능

@@ -71,4 +71,37 @@
     'a': 1 // Object literal may only specify known properties, and ''a'' does not exist in type 'ArrayLike<string>'
   };  // OK
 
+
+  /**
+   * Array, Tuple, ArrayLike 관계
+   */
+  const aa: number[] = [1, 2];
+  const bb: [number, number] = [1, 2];
+  const cc: ArrayLike<number> = [1, 2];
+
+  const dd: number[] = bb; // Tuple은 Array에 할당 O
+  const ee: [number, number] = aa; // Array는 Tuple에 할당 x
+  // ---- Array가 Tuple보다 더 큰 타입이다 -------
+
+  const ff: number[] = cc; // ArrayLike는 Array에 할당 X
+  const gg: ArrayLike<number> = aa; // Array는 ArrayLike에 할당 O
+  // ---- ArrayLike가 Array보다 더 큰 타입이다 ------
+
+  const hh: [number, number] = cc; // ArrayLike는 Tuple에 할당 X
+  const ii: ArrayLike<number> = bb; // Tuple은 ArrayLike에 할당 O
+  // ---- ArrayLike가 Tuple보다 더 큰 타입이다 -----
+
+  //============== (결론) ArrayLike > Array > Tuple ====================//
+
+  const jj: readonly number[] = [1, 2];
+  const kk: number[] = jj; // readonly Array 은 Array에 할당 X
+  const ll: readonly number[] = aa; // Array는 readonly Array에 할당 O
+  // ---- readonly Array가 Array보다 더 큰 타입이다 (readonly Array에는 Array에 있는 push, pop 등 배열요소 변경 함수들을 사용할 수 없음(없다고 봐야할듯?), 그래서 더 큰 타입으로 추측)-----
+
+  const mm: ArrayLike<number> = jj; // readonly Array는 ArrayLike에 할당 O
+  const nn: readonly number[] = cc; // ArrayLike는 readonly Array에 할당 X
+  // ---- ArrayLike가 readonlyArray보다 더 큰 타입이다 -----
+
+  //============== (결론) ArrayLike > reaonly Array > Array > Tuple ====================//
+
 }

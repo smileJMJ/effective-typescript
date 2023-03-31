@@ -34,13 +34,4 @@
     }
     return sum;
   }
-
-  // readonly number[]로 매개변수 지정하여, 함수 내부에서는 arr을 변경하지 않도록 함
-  function arraySum3(arr: readonly number[]) {
-    let sum = 0;
-    for (const num of arr) {
-      sum += num;
-    }
-    return sum;
-  }
 }
